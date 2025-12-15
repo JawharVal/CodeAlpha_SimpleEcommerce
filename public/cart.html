@@ -1,0 +1,49 @@
+<!-- cart.html -->
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="/css/styles.css"/>
+    <style>
+        /* simple modal styles */
+        .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(0,0,0,.5); z-index: 1000; }
+        .modal.show { display: flex; }
+        .modal-card { background: #fff; border-radius: 12px; padding: 20px; max-width: 420px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+        .modal-card h3 { margin: 0 0 8px; }
+        .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
+        .btn-secondary { background: #eee; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+<header><a href="/">← Store</a></header>
+
+<main>
+    <h2>Your Cart</h2>
+    <p id="emptyMsg" class="muted" style="display:none">Your cart is empty.</p>
+    <div id="cartList" class="cart-list"></div>
+    <div class="row" style="justify-content:space-between;align-items:center;margin-top:12px">
+        <strong>Total: <span id="cartTotal">$0.00</span></strong>
+        <button id="checkoutBtn" disabled>Proceed to checkout →</button>
+    </div>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/cart.js"></script>
+
+
+<!-- Login Required Modal -->
+<div id="loginModal" class="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <h3 id="modalTitle">Login required</h3>
+        <p>To proceed to checkout, please log in.</p>
+        <div class="modal-actions">
+            <button id="modalCancel" class="btn btn-secondary">Cancel</button>
+            <button id="modalLogin" class="btn">Go to Login</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

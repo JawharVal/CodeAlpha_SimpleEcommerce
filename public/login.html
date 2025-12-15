@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Login / Register</title>
+    <link rel="stylesheet" href="/css/styles.css"/>
+    <style>
+        .auth-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+        .auth-card h3{margin:0 0 8px}
+        .field{display:flex;flex-direction:column;gap:6px;margin:8px 0}
+        .field input{padding:10px;border:1px solid #e5e7eb;border-radius:10px}
+        .field .err{color:#b91c1c;font-size:12px;height:0;overflow:visible}
+        .hint{font-size:12px;color:#6b7280}
+        .full{width:100%}
+        .row{display:flex;gap:8px;align-items:center}
+        .toggle-eye{cursor:pointer;font-size:12px;color:#6b7280}
+        .msg{margin-top:8px;font-size:14px}
+        .msg.ok{color:#065f46}.msg.err{color:#991b1b}
+        details{border:1px dashed #e5e7eb;border-radius:10px;padding:8px}
+        details summary{cursor:pointer;color:#111827}
+        @media (max-width: 900px){ .auth-wrap{grid-template-columns:1fr} }
+    </style>
+</head>
+<body>
+<header>
+    <a href="/">← Store</a>
+    <nav>
+        <a href="/cart.html">🛒 Cart</a>
+        <a href="/login.html" id="loginLink">Login</a>
+        <a href="#" id="logoutLink" style="display:none">Logout</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Welcome</h2>
+    <p id="topMsg" class="hint"></p>
+
+    <div class="auth-wrap">
+        <!-- LOGIN -->
+        <section class="card auth-card" id="loginCard">
+            <h3>Sign in</h3>
+
+            <div class="field">
+                <label for="loginEmail" class="hint">Email</label>
+                <input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com"/>
+                <small id="loginEmailErr" class="err"></small>
+            </div>
+
+            <div class="field">
+                <label for="loginPassword" class="hint">Password</label>
+                <div class="row">
+                    <input id="loginPassword" type="password" autocomplete="current-password" class="full" placeholder="••••••••"/>
+                    <button id="toggleLoginPw" class="btn-light" type="button">Show</button>
+                </div>
+                <small id="loginPasswordErr" class="err"></small>
+            </div>
+
+            <button id="loginBtn" class="btn full">Sign in →</button>
+            <p class="hint">No account? <a href="#registerCard" id="goRegister">Create one</a></p>
+        </section>
+
+        <!-- REGISTER -->
+        <section class="card auth-card" id="registerCard">
+            <h3>Create account</h3>
+
+            <div class="field">
+                <label for="regName" class="hint">Your name</label>
+                <input id="regName" placeholder="John Smith" autocomplete="name"/>
+                <small id="regNameErr" class="err"></small>
+            </div>
+
+            <div class="field">
+                <label for="regEmail" class="hint">Email</label>
+                <input id="regEmail" type="email" placeholder="you@example.com" autocomplete="email"/>
+                <small id="regEmailErr" class="err"></small>
+            </div>
+
+            <div class="field">
+                <label for="regPassword" class="hint">Password</label>
+                <div class="row">
+                    <input id="regPassword" type="password" placeholder="Minimum 6 characters" autocomplete="new-password" class="full"/>
+                    <button id="toggleRegPw" class="btn-light" type="button">Show</button>
+                </div>
+                <small class="hint">Use at least 6 characters.</small>
+                <small id="regPasswordErr" class="err"></small>
+            </div>
+
+            <details>
+                <summary>Add default shipping now (optional)</summary>
+                <div class="field"><label class="hint" for="regShipName">Full name</label><input id="regShipName" placeholder="John Smith"/></div>
+                <div class="field"><label class="hint" for="regShipAddress">Address</label><input id="regShipAddress" placeholder="Street, house, apt"/></div>
+                <div class="field row">
+                    <div style="flex:1"><label class="hint" for="regShipCity">City</label><input id="regShipCity" placeholder="City"/></div>
+                    <div style="flex:1"><label class="hint" for="regShipZip">ZIP</label><input id="regShipZip" placeholder="ZIP"/></div>
+                </div>
+                <div class="field"><label class="hint" for="regShipCountry">Country</label><input id="regShipCountry" placeholder="Country"/></div>
+            </details>
+
+            <button id="regBtn" class="btn full">Create account →</button>
+        </section>
+    </div>
+
+    <p id="authMsg" class="msg"></p>
+</main>
+
+<script src="/js/api.js" defer></script>
+<script src="/js/auth.js" defer></script>
+</body>
+</html>
